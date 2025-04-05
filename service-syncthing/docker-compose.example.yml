@@ -1,0 +1,18 @@
+services:
+  syncthing:
+    image: syncthing/syncthing
+    container_name: syncthing
+    hostname: optiplex-home-server
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - ./data:/var/syncthing
+    ports:
+      # the actual protocol traffic
+      - 22000:22000
+      # the web UI interface
+      - 8384:8384/tcp
+      # the broadcast port for finding other synthing devices on the network
+      - 21027:21027/udp
+    restart: unless-stopped

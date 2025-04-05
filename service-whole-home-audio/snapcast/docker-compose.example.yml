@@ -1,0 +1,27 @@
+# version: "3"
+services:
+  snapcast:
+    image: docker.io/sweisgerber/snapcast:latest
+    hostname: snapcast
+    environment:
+      - PUID=1000
+      - PGID=1000 # set to audio group ID
+      - TZ=Europe/Berlin
+      - START_SNAPCLIENT=true # set to `true` for snapclient to start
+      # --host: name or ip of compose service or dockerhost
+      # --soundcard: <ID> from `snapclient -l` from inside the container
+      # - SNAPCLIENT_OPTS=--host snapcast --soundcard <ID>
+      #   => Don't use quotes for SNAPCLIENT_OPTS="" !
+      # - HOST_AUDIO_GROUP=<AUDIO-GID> # set to GID of host audio group
+    restart: "unless-stopped"
+    ports:
+      - 1704:1704
+      - 1705:1705
+      - 1780:1780
+    devices:
+      - /dev/snd:/dev/snd # optional, only if you want to use snapclient
+    volumes:
+      - ./config/:/config/
+      - ./data/:/data/
+      # /audio should get used to place FIFOs for audio playback from mpd/mopidy/host/etc
+      - ./audio/:/audio/

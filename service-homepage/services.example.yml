@@ -1,0 +1,73 @@
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/services/
+
+
+- Networking:
+    - WG Easy (Wireguard):
+        href: http://10.0.0.48:51821
+        description: Wireguard VPN config
+        icon: wireguard.png
+    - Router:
+        href: http://10.0.0.1
+        description: Router admin login interface
+        icon: asus-router.png
+
+- Data Management and Backups:
+    - Kopia:
+        href: http://10.8.0.3:51515/
+        description: Encrypted data backups
+        icon: kopia.png
+    - Syncthing:
+        href: http://10.8.0.3:8384
+        description: Homepage is 😎
+        icon: syncthing.png
+    - Paperless:
+        href: http://10.8.0.3:8002
+        description: Paper
+        icon: paperless.png
+
+- Media:
+    - Jellyfin:
+        href: http://10.8.0.3:8096
+        description: Movies!
+        icon: jellyfin.png
+    - Immich:
+        href: http://10.8.0.3:2283/
+        description: Photo and video management
+        icon: immich.png
+
+- Home & Family:
+    - Home Assistant:
+        href: http://10.8.0.3:8123
+        description: Home stuff
+        icon: home-assistant.png
+    - Mealie:
+        href: http://10.8.0.3:9925
+        description: Food
+        icon: mealie.png
+
+- Calendar:
+    - Upcoming Events:
+        widget:
+            type: calendar
+            firstDayInWeek: sunday # optional - defaults to monday
+            view: agenda
+            integrations: # optional
+            - type: ical # Show calendar events from another service
+              url: https://calendar.google.com/calendar/ical/XXXXXXXXXXXXXXXXXXXX
+              name: My Events # required - name for these calendar events
+              color: zinc # optional - defaults to pre-defined color for the service (zinc for ical)
+              params: # optional - additional params for the service
+                showName: true # optional - show name before event title in event line - defaults to false
+    - Family Calendar:
+        widget:
+            type: calendar
+            firstDayInWeek: sunday # optional - defaults to monday
+            view: monthly
+            integrations: # optional
+            - type: ical # Show calendar events from another service
+              url: https://calendar.google.com/calendar/ical/XXXXXXXXXXXXXXXXXXXX
+              name: My Events # required - name for these calendar events
+              color: zinc # optional - defaults to pre-defined color for the service (zinc for ical)
+              params: # optional - additional params for the service
+                showName: true

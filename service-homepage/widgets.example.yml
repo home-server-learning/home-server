@@ -1,0 +1,29 @@
+# For configuration options and examples, please see:
+# https://gethomepage.dev/configs/info-widgets/
+
+- resources:
+    cpu: true
+    memory: true
+    disk: /
+
+- search:
+    provider: duckduckgo
+    target: _blank
+
+- openmeteo:
+    label: Angus # optional
+    latitude: 44.324858
+    longitude: -79.857756
+    #timezone: Europe/Kiev # optional
+    units: metric # or imperial
+    cache: 5 # Time in minutes to cache API responses, to stay within limits
+    format: # optional, Intl.NumberFormat options
+      maximumFractionDigits: 1
+
+#- datetime:
+    # 4 januari 2023 om 13:51:25 PST
+#    locale: en-us
+#    text_size: xl
+    # format:
+    #   dateStyle: long
+    #   timeStyle: long
